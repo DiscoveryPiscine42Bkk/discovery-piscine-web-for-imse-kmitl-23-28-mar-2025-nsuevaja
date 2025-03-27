@@ -6,6 +6,8 @@
         body {
             font-family: sans-serif;
             text-align: center;
+            /* Rainbow background animation */
+            animation: rainbowBackground 5s infinite;
         }
         .container {
             margin-top: 100px;
@@ -19,6 +21,34 @@
             text-decoration: none;
             border-radius: 5px;
         }
+
+        /* Keyframes for rainbow animation */
+        @keyframes rainbowBackground {
+            0% {
+                background-color: hsl(0, 100%, 50%);
+            }
+            14% {
+                background-color: hsl(60, 100%, 50%);
+            }
+            28% {
+                background-color: hsl(120, 100%, 50%);
+            }
+            42% {
+                background-color: hsl(180, 100%, 50%);
+            }
+            57% {
+                background-color: hsl(240, 100%, 50%);
+            }
+            71% {
+                background-color: hsl(300, 100%, 50%);
+            }
+            85% {
+                background-color: hsl(360, 100%, 50%);
+            }
+            100% {
+                background-color: hsl(0, 100%, 50%);
+            }
+        }
     </style>
 </head>
 <body>
@@ -27,41 +57,5 @@
         <a href="profile.html">Profile Page</a>
         <a href="experience_contact.html">Experience and Contact Page</a>
     </div>
-
-    <script>
-        function generateRainbowColors(numColors) {
-          const colors = [];
-          for (let i = 0; i < numColors; i++) {
-            const hue = (i * 360) / numColors;
-            colors.push(`hsl(${hue}, 100%, 50%)`);
-          }
-          return colors;
-        }
-
-        function applyRainbowAnimation(element, property, duration = 5, numColors = 360) {
-          const colors = generateRainbowColors(numColors);
-          let colorIndex = 0;
-          setInterval(() => {
-            element.style[property] = colors[colorIndex];
-            colorIndex = (colorIndex + 1) % numColors;
-          }, duration * 1000 / numColors);
-        }
-
-        // Apply rainbow animation to the body background
-        const bodyElement = document.querySelector('body');
-        applyRainbowAnimation(bodyElement, 'backgroundColor');
-
-        // Apply rainbow animation to the heading text color
-        const headingElement = document.querySelector('h1');
-        if (headingElement) {
-          applyRainbowAnimation(headingElement, 'color');
-        }
-
-        // Apply rainbow animation to links
-        const links = document.querySelectorAll('a');
-        links.forEach(link => {
-          applyRainbowAnimation(link, 'color');
-        });
-    </script>
 </body>
 </html>
